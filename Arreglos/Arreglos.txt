@@ -1,0 +1,164 @@
+Ejercicio:1
+
+
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+Scanner sn=new Scanner(System.in);
+
+//Pido una longitud
+System.out.println("Inserte almenos 14 digitos");
+
+//Creo el arreglo con esa longitud
+int numeros[]=new int[15];
+
+int num;
+
+//Recorro el array
+for(int i=0;i<numeros.length;i++){
+
+System.out.println("Inserte un número en la posicion "+i);
+
+do{
+//pido el numero en una posicion especifica
+num=sn.nextInt();
+
+if(!(num>=0 && num<=10)){
+System.out.println("Error. Solo números del 0 al 10. "
++ "Inserte un número en la posicion "+i);
+}
+
+}while(!(num>=0 && num<=10));
+
+//asigno, ya que sé que el número es correcto
+numeros[i]=num;
+
+}
+
+//Esta parte es opcional para que se vea lo que hemos insertado
+System.out.println("Estos son los números elegidos por el usuario");
+for(int i=0;i<numeros.length;i++){
+System.out.println(numeros[i]);
+}
+	}
+}
+----
+Ejercicio:2
+
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+
+Scanner sn=new Scanner(System.in);
+
+//Pedimos una longitud
+System.out.println("Inserte una longitud");
+int longitud=sn.nextInt();
+
+//creo un array con esa longitud
+int numeros[]=new int[longitud];
+
+//recorro el arreglo y uso la funcion para crear un aleatorio
+for(int i=0;i<numeros.length;i++){
+numeros[i]=generaNumeroAleatorio(0,10);
+System.out.println("En la posicion "+i+" esta el valor: "+numeros[i]);
+}
+
+}
+
+//Crea un numero aleatorio, entre un minimo y un maximo
+public static int generaNumeroAleatorio(int minimo, int maximo){
+
+return (int)Math.floor(Math.random()*(minimo-(maximo+1))+(maximo+1));
+
+	}
+}
+
+
+-----
+Ejercicio:3
+
+public class MyClass {
+    public static void main(String args[]) {
+      
+        //Creacion de un arreglo
+        int[] numeros=new int[100];
+        //Se asigna un valor de indice ademas de añadir este mismo
+        for(int i=0;i<numeros.length;i++){
+        numeros[i]=i+1;
+        System.out.println(numeros[i]);
+        }
+
+    }
+}
+--------
+
+Ejercicio:4
+
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+		//restamos La posicion mayor (Z, añadiendole 1) a la posicion menor
+char abecedario[]=new char[91-65];
+//creamos el abecedario
+for(int i=65, indice=0;i<91;i++, indice++){
+abecedario[indice]=(char)i;
+}
+Scanner sn=new Scanner(System.in);
+//Pedimos un numero, que serán posiciones del array
+System.out.println("inserte un numero entre 0 y "+(abecedario.length-1)+". -1 para acabar");
+int num=sn.nextInt();
+String cadena="";
+while(num!=-1){
+//Comprobamos que el número es correcto
+if(num>=0 && num<abecedario.length){
+cadena+=abecedario[num];
+System.out.println("inserte un numero entre 0 y "+(abecedario.length-1)+". -1 para acabar");
+}else{
+System.out.println("Numero no valido inserte un numero entre 0 y "+(abecedario.length-1)+". -1 para acabar");
+}
+num=sn.nextInt(); //lo pedimos de nuevo
+}
+//Resultado final
+System.out.println("La cadena resultante es "+cadena);
+
+	}
+}
+
+------
+Ejercicio:5
+public class Main
+{
+	public static void main(String[] args) {
+	 int[] numeros = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        visualizar(numeros);
+        int aux;
+ 
+  
+ 
+        //2ª forma: Con array auxiliar, for 1 variable
+        int[] invertido = new int[numeros.length];
+        for(int i=0;i<numeros.length;i++){
+            invertido[i] = numeros[numeros.length-1-i];
+        }
+        numeros = invertido;
+        visualizar(numeros);
+ 
+    }
+ 
+    private static void visualizar(int[] array){
+        String cadena = "Array: ";
+        for (int i = 0; i < array.length; i++) {
+            cadena += array[i] + ", ";
+        }
+        cadena = cadena.substring(0, cadena.length()-2);
+        System.out.println(cadena);
+
+	}
+}
